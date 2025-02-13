@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorpresa para Natalia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: rgb(233, 81, 182);
+            font-family: 'Dancing Script', cursive;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 40px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        img {
+            width: 250px;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #botones {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-weight: bold;
+        }
+
+        #si {
+            background: linear-gradient(45deg, #ff4e50, #fc913a);
+            color: white;
+            box-shadow: 0 4px 10px rgba(255, 78, 80, 0.5);
+        }
+
+        #si:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(255, 78, 80, 0.7);
+        }
+
+        #no {
+            background: linear-gradient(45deg, #2196F3, #21CBF3);
+            color: white;
+            box-shadow: 0 4px 10px rgba(33, 150, 243, 0.5);
+            position: relative;
+        }
+
+        #no:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(33, 150, 243, 0.7);
+        }
+
+        .corazon {
+            position: absolute;
+            color: red;
+            font-size: 50px;
+            animation: flotar 5s infinite ease-in-out;
+        }
+
+        @keyframes flotar {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(-20px); opacity: 0.8; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <h1>¿Quieres ser mi San Valentín? </h1>
+    <h2>Tienes opciones, no te preocupes jsjs </h2>
+    
+    <p>Drako te vigila</p>
+
+    <div id="botones"></div>
+
+    <audio autoplay loop>
+        <source src="highschool.mp3" type="audio/mpeg">
+        Tu navegador no soporta audio.
+    </audio>
+
+    <script>
+        const botones = document.getElementById("botones");
+        const si = document.createElement("button");
+        const no = document.createElement("button");
+
+        si.textContent = "Sí";
+        no.textContent = "No";
+        si.id = "si";
+        no.id = "no";
+
+        botones.appendChild(si);
+        botones.appendChild(no);
+
+        si.addEventListener("click", () => {
+            alert("YA SABIA YO QUE DIRIAS QUE SI");
+        });
+
+        no.addEventListener("mouseover", () => {
+            let nuevaX = Math.random() * (window.innerWidth - no.clientWidth);
+            let nuevaY = Math.random() * (window.innerHeight - no.clientHeight);
+            no.style.left = nuevaX + "px";
+            no.style.top = nuevaY + "px";
+        });
+
+        no.addEventListener("click", () => {
+            alert("Piénsalo otra vez ");
+        });
+
+        function crearCorazon() {
+            const corazon = document.createElement("div");
+            corazon.classList.add("corazon");
+            corazon.innerHTML = "❤️";
+            corazon.style.left = Math.random() * window.innerWidth + "px";
+            corazon.style.top = Math.random() * window.innerHeight + "px";
+            document.body.appendChild(corazon);
+        }
+
+        for (let i = 0; i < 10; i++) {
+            crearCorazon();
+        }
+    </script>
+</body>
+</html>
